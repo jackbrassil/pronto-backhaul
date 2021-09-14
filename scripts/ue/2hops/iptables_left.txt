@@ -1,0 +1,14 @@
+Chain PREROUTING (policy ACCEPT 1852 packets, 237K bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    3   174 CONNMARK   tcp  --  enp2s0 *       10.64.10.42          0.0.0.0/0            tcp dpt:12010 CONNMARK set 0x2
+    3   174 DNAT       tcp  --  enp2s0 *       0.0.0.0/0            0.0.0.0/0            connmark match  0x2 to:10.64.10.53:12020
+
+Chain INPUT (policy ACCEPT 1724 packets, 227K bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 20 packets, 2215 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain POSTROUTING (policy ACCEPT 20 packets, 2215 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    3   174 SNAT       all  --  *      *       0.0.0.0/0            0.0.0.0/0            connmark match  0x2 to:192.168.0.32
